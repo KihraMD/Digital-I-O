@@ -1,0 +1,29 @@
+int greenLED = 19; //Green LED pin
+int yellowLED = 21;//yellow LED pin
+int s1 = 2;//maintained switch pin # (switch) 
+int b1 = 3;//momentary switch pin # (button) 
+
+void setup() {
+  pinMode(b1,INPUT);
+  pinMode(s1,INPUT);
+  pinMode(greenLED,OUTPUT);
+  pinMode(yellowLED,OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.println(digitalRead(b1));
+
+  if (digitalRead(s1) == 1){
+    digitalWrite(greenLED,HIGH);
+  }else{
+    digitalWrite(greenLED,LOW);
+  }
+  
+  if (digitalRead(b1) == 0){
+    digitalWrite(yellowLED,LOW);
+  }else{
+    digitalWrite(yellowLED,HIGH);
+  }
+}
